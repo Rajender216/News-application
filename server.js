@@ -42,6 +42,9 @@ const connectDb=async(noteContent)=>{
 
 app.use(bodyParser.json()); // Parse incoming requests with JSON payloads
 app.use(express.static('public')) // Serve static files (HTML, CSS, JS)
+app.get("/", (req, res) => {
+  res.sendFile(__dirname + "/public/index.html");
+});
 
 
 
