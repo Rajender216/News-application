@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 200 200">
+  <rect width="200" height="200" rx="30" ry="30" fill="#FFBB33"/>
+  <rect x="30" y="60" width="140" height="110" fill="#FFFFFF" rx="15" ry="15"/>
+  <line x1="45" y1="90" x2="155" y2="90" stroke="#FFBB33" stroke-width="6" stroke-linecap="round"/>
+  <line x1="45" y1="120" x2="155" y2="120" stroke="#FFBB33" stroke-width="6" stroke-linecap="round"/>
+  <line x1="45" y1="150" x2="155" y2="150" stroke="#FFBB33" stroke-width="6" stroke-linecap="round"/>
+  <text x="50%" y="40" font-family="Arial" font-size="28" fill="#FFFFFF" text-anchor="middle" alignment-baseline="middle">Notes</text>
+</svg>

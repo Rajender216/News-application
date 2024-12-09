@@ -1,0 +1,389 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+:root {
+  --primary-text-color: #183b56;
+  --secondary-text-color: #577592;
+  --accent-color: #2294ed;
+  --accent-color-dark: #1d69a3;
+}
+body {
+  font-family: "Poppins", serif;
+  font-weight: 500;
+  font-style: normal;
+}
+p {
+  font-family: "Roboto", sans-serif;
+  font-weight: 300;
+}
+
+a {
+  text-decoration: none;
+}
+
+.flex {
+  display: flex;
+  align-items: center;
+}
+.hidden {
+  display: none;
+}
+
+.container {
+  max-width: 1400px;
+  margin-inline: auto;
+  overflow: hidden;
+}
+
+nav {
+  background-color: #f3faff;
+  box-shadow: 0 0 4px #bbd0e2;
+  position: fixed;
+  top: 0;
+  z-index: 99;
+  left: 0;
+  right: 0;
+}
+
+.main-nav {
+  background-color: #464646;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 61px;
+  padding: 3px 7px;
+}
+.main-nav a img {
+  width: 100px;
+}
+
+.logoandHam {
+  width: 160px;
+  gap: 10px;
+  justify-content: space-around;
+}
+
+.hamburger img {
+  width: 25px;
+  cursor: pointer;
+}
+.search-bar {
+  height: 32px;
+  gap: 9px;
+}
+
+.news-input {
+  width: 300px;
+  background-color: #464646;
+  height: 45px;
+  padding-inline: 12px;
+  border-radius: 30px;
+  border: 2px solid black;
+  font-family: "Roboto", sans-serif;
+  color: white;
+}
+.news-input::placeholder {
+  color: white; /* Change this to your desired color */
+  opacity: 1; /* Optional: Makes the placeholder fully opaque */
+}
+
+.search-button {
+  height: 45px;
+  background-color: #252525;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 45px;
+  border-radius: 66px;
+}
+.search-button img {
+  filter: invert(1);
+}
+.search-button:hover {
+  background-color: var(--accent-color-dark);
+}
+.channel-select {
+  gap: 10px;
+  position: relative;
+  margin: 10px 0;
+}
+
+#channel-filter {
+  width: 100%;
+  padding: 5px;
+  background-color: #464646;
+  border-radius: 6px;
+  border: 2px solid #000000;
+  font-family: "Roboto", sans-serif;
+  color: white;
+}
+/* notex */
+/* Style for the notes icon in the navbar */
+.sidebar {
+  position: fixed;
+  left: -250px;
+  top: 62px;
+  width: 250px;
+  height: 100%;
+  background-color: #464646;
+  transition: left 0.5s ease;
+  padding-top: 60px;
+  z-index: 1000;
+  flex-direction: column;
+  align-items: flex-start;
+  padding-left: 25px;
+  gap: 20px;
+  color: white;
+}
+.close {
+  width: 30px;
+  display: none;
+  cursor: pointer;
+}
+
+.nav-links ul {
+  gap: 13px;
+  flex-direction: column;
+  align-items: baseline;
+  padding-left: 10px;
+}
+
+.hover-link {
+  cursor: pointer;
+}
+.hover-link:hover {
+  color: var(--secondary-text-color);
+}
+.hover-link:active {
+  color: red;
+}
+.hover-link.active {
+  color: var(--accent-color);
+}
+/* Modal styling */
+.notes-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.notes-modal-content {
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  width: 400px;
+}
+
+#notes-icon {
+  cursor: pointer;
+  width: 30px;
+}
+.notes-icon {
+  gap: 13px;
+}
+.see-notes-modal {
+  justify-content: flex-start;
+  background-color: #464646;
+  height: 91%;
+  width: 500px;
+  position: fixed;
+  transition: left 0.5s ease;
+  left: 251px;
+  top: 62px;
+  flex-direction: column;
+  z-index: 1000;
+  color: white;
+}
+#see-notes {
+  cursor: pointer;
+  width: 35px;
+}
+
+#notebar {
+  padding-left: 30px;
+  overflow-y: scroll;
+}
+.headingandclose {
+  width: 100%;
+  display: flex;
+  color: black;
+  justify-content: space-between;
+  padding: 1px 28px;
+  background-color: #a4a4a4;
+}
+.closenotelogo {
+  cursor: pointer;
+}
+
+/* Hide the modal initially */
+.hidden {
+  display: none;
+}
+
+#notes-text {
+  width: 100%;
+  height: 100px;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+#save-note,
+#download-note {
+  margin-right: 10px;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  background-color: #2294ed;
+  color: white;
+}
+#close-note {
+  cursor: pointer;
+}
+.headandclose {
+  justify-content: space-between;
+}
+
+/* notes section in sidebar  */
+.notes {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  row-gap: 15px;
+}
+.takeNotes {
+  gap: 10px;
+}
+.seeNotes {
+  gap: 18px;
+}
+
+main {
+  padding-block: 20px;
+  /* margin-top: 80px; */
+}
+.card-container {
+  justify-content: space-between;
+  flex-wrap: wrap;
+  row-gap: 20px;
+  align-items: start;
+}
+
+.card {
+  width: 300px;
+  height: 400px;
+  box-shadow: 0 0 4px #d4ecff;
+  border-radius: 6px;
+  cursor: pointer;
+  background-color: var(--card-bg-color);
+  overflow: hidden;
+  transition: all 0.3s ease;
+  color: var(--card-text-color);
+}
+.card:hover {
+  box-shadow: 1px 1px 4px #d4ecff;
+  /* background-color: #f9fdff; */
+  transform: translateY(-2px);
+}
+.card-header img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+.card-content {
+  padding: 12px;
+}
+.news-source {
+  margin-block: 12px;
+}
+
+html {
+  padding-top: 100px;
+  padding-bottom: 100px;
+  height: 100%;
+  overflow: hidden;
+  width: 100vw;
+  height: 100vh;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+  background: none;
+  background-color: var(--bg-color);
+  top: 150px;
+}
+
+:root {
+  --font-color: #0f0f0f;
+  --bg-color: #fefefe;
+  --card-bg-color: #fff;
+  --card-text-color: #0f0f0f;
+}
+
+[data-theme="dark"] {
+  --font-color: #fefefe;
+  --bg-color: #121212;
+  --card-bg-color: #252525;
+  --card-text-color: white;
+}
+
+.switch {
+  right: 50px;
+  top: 50px;
+  gap: 20px;
+}
+
+.theme-switch {
+  display: inline-block;
+  height: 34px;
+  position: relative;
+  width: 60px;
+}
+
+.theme-switch input {
+  display: none;
+}
+
+.slider {
+  background-color: #ccc;
+  bottom: 0;
+  cursor: pointer;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  transition: 0.4s;
+}
+
+.slider:before {
+  background-color: #fff;
+  bottom: 4px;
+  content: "";
+  height: 26px;
+  left: 4px;
+  position: absolute;
+  transition: 0.4s;
+  width: 26px;
+}
+
+input:checked + .slider {
+  background-color: #2b2b2b;
+}
+
+input:checked + .slider:before {
+  transform: translateX(26px);
+}
+
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}

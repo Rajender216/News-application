@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <nav>
+        <div class="main-nav flex">
+            <div class="logoandHam flex">
+                <div class="close">
+                    <img src="./svgs/close.svg" alt="">
+                </div>
+                <div class="hamburger">
+                    <img src="./svgs/hamburger.svg" alt="">
+                </div>
+                <a href="#" onclick="reload()">
+                    <img src="./svgs/logo.svg" alt="">
+                </a>
+
+            </div>
+            <div class="search-bar flex">
+                <input id="search-text" type="text" class="news-input" placeholder="e.g Science">
+                <div class="search-button" id="search-button">
+                    <img  src="./svgs/search.svg" alt="">
+                </div>
+
+            </div>
+            <div class="channel-select">
+                <select id="channel-filter" onchange="onChannelChange()">
+                    <option value="in">Select News-Channel</option>
+                    <option value="ndtv">NDTV</option>
+                    <option value="times-now">Times Now</option>
+                    <option value="republic-tv">Republic TV</option>
+                    <option value="cnn-news18">CNN-News18</option>
+                    <option value="india-today">India Today</option>
+                    <option value="zee-news">Zee News</option>
+                    <option value="aaj-tak">Aaj Tak</option>
+                    <option value="abp-news">ABP News</option>
+                    <option value="newsx">NewsX</option>
+                    <option value="dd-news">DD News</option>
+                    <option value="times-of-india">The Times of India</option>
+                    <option value="the-hindu">The Hindu</option>
+                    <option value="indian-express">The Indian Express</option>
+                    <option value="hindustan-times">Hindustan Times</option>
+                    <option value="dainik-jagran">Dainik Jagran</option>
+                    <option value="amar-ujala">Amar Ujala</option>
+                    <option value="economic-times">The Economic Times</option>
+                    <option value="navbharat-times">Navbharat Times</option>
+                    <option value="deccan-herald">Deccan Herald</option>
+                    <option value="mint">Mint</option>
+                </select>
+            </div>
+        </div>
+    </nav>
+
+    <!-- sidebar section/ -->
+    <div class="sidebar flex">
+        <div class="nav-links">
+            <h2>Categories</h2>
+            <ul class="flex">
+                <li class="hover-link nav-item" id="Cricket" onclick="onNavItemClick('cricket')">Cricket</li>
+                <li class="hover-link nav-item" id="finance" onclick="onNavItemClick('finance')">Finance</li>
+                <li class="hover-link nav-item" id="politics" onclick="onNavItemClick('politics')">Politics</li>
+                <li class="hover-link nav-item" id="education" onclick="onNavItemClick('education')">Education</li>
+                <li class="hover-link nav-item" id="technology" onclick="onNavItemClick('technology')">Technology
+                </li>
+            </ul>
+        </div>
+        <div class="notes">
+            <h2>Notes</h2>
+            <div class="takeNotes flex">
+                <h4>Take-Notes</h4>
+                <img id="notes-icon" src="./svgs/notes.svg" alt="Notes" onclick="toggleNotesModal()">
+            </div>
+            <div class="seeNotes flex">
+                <h4>See-Notes</h4>
+                <img class="hover-link nav-item" id="see-notes" src="./svgs/savednotes.svg" alt="Notes"
+                        onclick="loadNotesFromServer()">
+            </div>
+                
+                
+        </div>
+        <div class="switch flex">
+            <h4>Dark Mode</h4>
+            <label class="theme-switch" for="checkbox">
+                <input type="checkbox" id="checkbox" />
+                <div class="slider round"></div>
+            </label>
+           
+        </div>
+    </div>
+
+    <!-- Notes Model -->
+    <div id="notes-modal" class="notes-modal hidden">
+        <div class="notes-modal-content">
+            <div class="headandclose flex">
+                <h3>Take Notes</h3>
+                <img id="close-note" onclick="toggleNotesModal()" src="./svgs/close.svg" alt="">
+            </div>
+            
+
+            <textarea id="notes-text" placeholder="Write your notes here..."></textarea>
+            <button id="save-note" onclick="saveNoteToServer(),toggleNotesModal()">Save Note</button>
+            <!-- <button id="close-note" onclick="toggleNotesModal()">Close</button> -->
+            <button id="download-note" onclick="downloadNoteAsText() ,toggleNotesModal()">Download</button>
+        </div>
+    </div>
+
+    <!-- See notes Model -->
+    <div id="see-notes-modal" class="see-notes-modal hidden flex">
+        <div class="headingandclose ">
+            <div class="Notebar"><h1>Notebar</h1></div>
+            <div class="closenotelogo"><img id="Close-Notes" src="./svgs/close.svg" alt=""></div>            
+        </div>
+        <div id="notebar">
+            <ol id="notes-list">
+                <li></li>
+            </ol>
+        </div>
+    </div>
+
+    <main>
+        <div class="card-container container flex" id="card-container">
+        </div>
+    </main>
+    
+    <template id="template-news-card">
+        <div class="card">
+            <div class="card-header">
+                <img src="https://via.placeholder.com/400x200" alt="news-image" id="news-img">
+            </div>
+            <div class="card-content">
+                <h3 class="news-title" id="news-title">this is title</h3>
+                <h6 class="news-source" id="news-source">End Gadget end 2020</h6>
+                <p class="news-desc" id="news-desc">Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati
+                    nobis adipisci ab explicabo velit maxime eos dignissimos ratione? Laboriosam, officia.</p>
+            </div>
+        </div>
+
+    </template>
+    
+    <script src="script.js"></script>
+    <script src="server.js"></script>
+</body>
+
+</html>
