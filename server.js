@@ -1,3 +1,6 @@
+import cors from "cors";
+
+app.use(cors()); // Allow all origins by default
 import express from "express";
 import bodyParser from "body-parser";
 import { MongoClient, ServerApiVersion } from "mongodb";
