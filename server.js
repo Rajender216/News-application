@@ -40,12 +40,18 @@ app.post('/notes', async (req, res) => {
     }
 
     try {
-        const noteId = await connectDb(noteContent); // Save the note to the database
-        res.status(201).send(`Note saved successfully with ID: ${noteId}`);
+        const database = client.db("News-app");
+        const notesCollection = database.collection("Notes-Collection");
+
+        // Insert the note into the collection
+        const result = await notesCollection.insertOne({ content: noteContent });
+        res.status(201).send(`Note saved successfully with ID: ${result.insertedId}`);
     } catch (error) {
+        console.error('Error saving note:', error);
         res.status(500).send('Failed to save note');
     }
 });
+
 
 // Start the server
 connectDb();
