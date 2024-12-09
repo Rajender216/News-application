@@ -2,7 +2,7 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import {MongoClient,ServerApiVersion} from "mongodb";
 const app = express();
-const port = 3000;
+const port = process.env.PORT || 3000;
 const client=new MongoClient("mongodb+srv://rajender216:PJCMdyR2JXTIth78@news-app.gb0vo.mongodb.net/?retryWrites=true&w=majority&appName=News-app&ssl=true",{
     serverApi:{
         version:ServerApiVersion.v1,
