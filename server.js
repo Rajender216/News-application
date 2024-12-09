@@ -12,32 +12,15 @@ const client=new MongoClient("mongodb+srv://rajender216:PJCMdyR2JXTIth78@news-ap
 });
 //  mongodb+srv://rajender216:PJCMdyR2JXTIth78@news-app.gb0vo.mongodb.net/?retryWrites=true&w=majority&appName=News-app
 
-const connectDb=async(noteContent)=>{
-    try {
-        await client.connect();
-        console.log("MongoDb connected successfully");
-        const database = client.db("News-app");
-        const notesCollection = database.collection("Notes-Collection");
-
-        // Define the note to be saved
-        const note = {
-            content: noteContent,
-            createdAt: new Date()  // Optional: You can store the timestamp when the note is created
-        };
-
-        // Insert the note into the collection
-        const result = await notesCollection.insertOne(note);
-        
-        // Log the result
-        // console.log("Note inserted with ID:", result.insertedId);
-        return result.insertedId;
-
-
-        
-    } catch (error) {
-        console.log(error);
-    }
-}
+const connectDb = async () => {
+  try {
+    await client.connect();
+    console.log("MongoDB connected successfully");
+  } catch (error) {
+    console.error("Failed to connect to MongoDB:", error);
+    process.exit(1); // Exit process if the database connection fails
+  }
+};
 
 
 app.use(bodyParser.json()); // Parse incoming requests with JSON payloads
